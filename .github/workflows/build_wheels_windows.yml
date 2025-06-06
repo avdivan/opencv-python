@@ -19,7 +19,7 @@ on:
 
 jobs:
   Build:
-    runs-on: windows-2019
+    runs-on: windows-2025
     strategy:
       fail-fast: false
       matrix:
@@ -67,7 +67,7 @@ jobs:
         python --version
         python -m pip install --upgrade pip
         python -m pip install --upgrade setuptools
-        python -m pip install cmake==3.24.2
+        python -m pip install cmake
         python -m pip install toml && python -c "import toml; c = toml.load('pyproject.toml'); print('\n'.join(c['build-system']['requires']))" >> requirements.txt | python -m pip install -r requirements.txt
         set "CI_BUILD=1" && python setup.py bdist_wheel --py-limited-api=cp37 --dist-dir=%cd%\wheelhouse -v
       shell: cmd
