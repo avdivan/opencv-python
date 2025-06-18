@@ -162,11 +162,6 @@ def main():
     # Raw paths relative to sourcetree root.
     files_outside_package_dir = {"cv2": ["LICENSE.txt", "LICENSE-3RD-PARTY.txt"]}
 
-    ci_cmake_generator = (
-        ["-G", "Visual Studio 14" + (" Win64" if is64 else "")]
-        if os.name == "nt"
-        else ["-G", "Unix Makefiles"]
-    )
 
     cmake_args = (
         (ci_cmake_generator if is_CI_build else [])
@@ -195,7 +190,6 @@ def main():
             "-DBUILD_DOCS=OFF",
             "-DPYTHON3_LIMITED_API=ON",
             "-DBUILD_OPENEXR=ON",
-            "-DWITH_OBSENSOR=OFF",
         ]
         + (
             # CMake flags for windows/arm64 build
