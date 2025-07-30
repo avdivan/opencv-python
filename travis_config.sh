@@ -19,12 +19,12 @@ function bdist_wheel_cmd {
     CI_BUILD=1 python${PYTHON_VERSION} setup.py bdist_wheel --py-limited-api=cp37 -v
     cp dist/*.whl $abs_wheelhouse
     if [ -z "$IS_OSX" ]; then
-      # this path can be changed in the latest manylinux image
-      TOOLS_PATH=/opt/_internal/pipx/venvs/auditwheel
-      /opt/python/cp39-cp39/bin/python -m venv $TOOLS_PATH
-      source $TOOLS_PATH/bin/activate
-      python patch_auditwheel_whitelist.py
-      deactivate
+       TOOLS_PATH="$HOME/auditwheel_venv"
+       python -m venv "$TOOLS_PATH"
+       source "$TOOLS_PATH/bin/activate"
+       pip install -U pip auditwheel
+       python patch_auditwheel_whitelist.py
+       deactivate
     fi
     if [ -n "$USE_CCACHE" -a -z "$BREW_BOOTSTRAP_MODE" ]; then ccache -s; fi
 }
