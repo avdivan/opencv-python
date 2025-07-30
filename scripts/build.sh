@@ -15,4 +15,5 @@ echo $ENABLE_CONTRIB > contrib.enabled
 echo $ENABLE_HEADLESS > headless.enabled
 echo $ENABLE_ROLLING > rolling.enabled
 set -x
+export CMAKE_ARGS="-DWITH_QT=OFF"
 build_wheel $REPO_DIR $PLAT
