@@ -28,7 +28,7 @@ jobs:
         python-version: ['3.9']
         platform: [x64]
         with_contrib: [0, 1]
-        without_gui: [0, 1]
+        without_gui: [1]
         build_sdist: [0]
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
@@ -80,7 +80,7 @@ jobs:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13']
         platform: [x64]
         with_contrib: [0, 1]
-        without_gui: [0, 1]
+        without_gui: [1]
         build_sdist: [0]
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
@@ -119,7 +119,7 @@ jobs:
         python-version: [3.8]
         platform: [x64]
         with_contrib: [0, 1]
-        without_gui: [0, 1]
+        without_gui: [1]
         build_sdist: [1]
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
